@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>视频知识原料包</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">YouTube 知识资产化助手</p>
+      <h1 id="videoTitle">视频知识原料包</h1>
+      <a id="videoUrl" href="#" target="_blank" rel="noreferrer"></a>
+    </header>
+
+    <main>
+      <section class="summary">
+        <div><strong id="segmentCount">0</strong><span>字幕段</span></div>
+        <div><strong id="noteCount">0</strong><span>笔记</span></div>
+        <div><strong id="captureStatus">未记录</strong><span>记录状态</span></div>
+      </section>
+
+      <nav class="tabs" aria-label="知识原料分类">
+        <button class="tab active" data-tab="transcript" type="button">Transcript</button>
+        <button class="tab" data-tab="notes" type="button">Notes</button>
+      </nav>
+
+      <section class="panel active" data-panel="transcript">
+        <div class="section-head">
+          <h2>中文字幕记录</h2>
+          <div class="export-actions">
+            <button id="exportTxt" type="button">TXT</button>
+            <button id="exportMarkdown" type="button">Markdown</button>
+          </div>
+        </div>
+        <p class="hint">在视频上的控制条点击“开始记录”，字幕才会保存到这里。</p>
+        <div id="transcriptList" class="list"></div>
+      </section>
+
+      <section class="panel" data-panel="notes">
+        <div class="section-head">
+          <h2>Notes 白板</h2>
+          <div class="export-actions">
+            <button id="exportNotesTxt" type="button">TXT</button>
+            <button id="exportNotesMarkdown" type="button">Markdown</button>
+          </div>
+        </div>
+        <p class="hint">高亮内容来自视频字幕。点击时间戳可以跳回视频；每条高亮内容下面都可以直接写自己的想法。</p>
+        <div id="notesWhiteboard" class="note-whiteboard">
+          <div id="notesList" class="note-flow"></div>
+          <div class="free-writing">
+            <label class="whiteboard-label" for="noteDocument">继续书写整篇心得</label>
+            <textarea id="noteDocument" class="whiteboard-editor" rows="12" placeholder="继续写你的总结、判断、行动计划……"></textarea>
+          </div>
+        </div>
+        <p id="noteDocumentStatus" class="hint" aria-live="polite">内容会自动保存</p>
+      </section>
+
+      <section id="emptyState" class="empty" hidden>
+        请先打开一个普通 YouTube 视频，然后点击浏览器工具栏中的插件图标。
+      </section>
+    </main>
+
+    <script src="storage.js"></script>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

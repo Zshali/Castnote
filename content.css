@@ -1,0 +1,102 @@
+#icr-controls {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10000;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 6px;
+  max-width: calc(100% - 32px);
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(24, 24, 24, 0.82);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+  font: 600 12px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif;
+  opacity: 0.28;
+  transition: opacity 0.18s ease;
+  backdrop-filter: blur(8px);
+}
+
+#movie_player:hover #icr-controls,
+#icr-controls:focus-within,
+#icr-controls[data-state="playing"],
+#icr-controls[data-state="paused"],
+#icr-controls[data-recording="recording"],
+#icr-controls[data-recording="paused"] {
+  opacity: 1;
+}
+
+#icr-controls .icr-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#icr-controls .icr-record-row {
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+#icr-controls button,
+#icr-controls select {
+  min-height: 29px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+
+#icr-controls button:hover:not(:disabled),
+#icr-controls select:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+#icr-controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+#icr-controls .icr-play {
+  background: #c8674f;
+  border-color: #c8674f;
+}
+
+#icr-controls .icr-record {
+  background: #6f8064;
+  border-color: #6f8064;
+}
+
+#icr-controls .icr-note {
+  background: #c8674f;
+  border-color: #c8674f;
+}
+
+#icr-controls .icr-status,
+#icr-controls .icr-record-status,
+#icr-controls .icr-note-status {
+  overflow: hidden;
+  max-width: 250px;
+  color: rgba(255, 255, 255, 0.82);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  #icr-controls .icr-status {
+    display: none;
+  }
+
+  #icr-controls .icr-record-status {
+    display: none;
+  }
+
+  #icr-controls .icr-note-status {
+    display: none;
+  }
+}

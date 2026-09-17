@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Castnote - 字幕朗读 & 笔记",
+  "version": "1.5.0",
+  "description": "朗读 YouTube 中文字幕，随时记录字幕、时间戳与个人笔记。",
+  "permissions": ["storage", "tabs", "sidePanel", "scripting"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "action": {
+    "default_title": "Castnote：字幕朗读 & 笔记"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["storage.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
